@@ -1,61 +1,643 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Your Reward</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #27c7e8;
-      text-align: center;
-      color: white;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SINS REWARDS</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: #20c7e8;
+    color: #101828;
+    overflow-x: hidden;
+}
+
+/* Diagonal background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        repeating-linear-gradient(
+            130deg,
+            rgba(255,255,255,0.88) 0px,
+            rgba(255,255,255,0.88) 55px,
+            transparent 55px,
+            transparent 155px
+        );
+    opacity: .72;
+    z-index: -1;
+}
+
+/* Page */
+.container {
+    width: 92%;
+    max-width: 1180px;
+    margin: auto;
+    padding: 28px 0 50px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    width: 82px;
+    height: 82px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.brand-text h1 {
+    color: white;
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 3px 0 rgba(0,0,0,.18);
+}
+
+.tagline {
+    color: white;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin-top: 4px;
+}
+
+.safe {
+    background: rgba(0,116,170,.9);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 800;
+    box-shadow: 0 5px 15px rgba(0,0,0,.18);
+}
+
+/* Back button */
+.back {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: rgba(0,120,180,.8);
+    padding: 13px 23px;
+    border-radius: 30px;
+    font-weight: 800;
+    margin-bottom: 22px;
+    border: 2px solid rgba(255,255,255,.55);
+    transition: .2s;
+}
+
+.back:hover {
+    transform: translateX(-4px);
+    background: #007db6;
+}
+
+/* Main reward */
+.reward-box {
+    background: rgba(255,255,255,.94);
+    border-radius: 24px;
+    padding: 28px;
+    display: grid;
+    grid-template-columns: 36% 64%;
+    gap: 38px;
+    box-shadow: 0 12px 35px rgba(0,0,0,.18);
+}
+
+.reward-image {
+    height: 390px;
+    border-radius: 17px;
+    overflow: hidden;
+    background: #f2f5f7;
+}
+
+.reward-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Reward information */
+.category {
+    display: inline-block;
+    background: #72d8f5;
+    color: #075a7e;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.reward-info h2 {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.reward-year {
+    font-size: 27px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.description {
+    color: #28627d;
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 650px;
+}
+
+.divider {
+    height: 1px;
+    background: #dce7eb;
+    margin: 24px 0;
+}
+
+/* Features */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.feature {
+    text-align: center;
+    padding: 10px;
+}
+
+.feature-icon {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.feature strong {
+    display: block;
+    font-size: 14px;
+}
+
+.feature span {
+    display: block;
+    color: #527080;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Button */
+.verify-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    background: linear-gradient(90deg,#08a9ef,#087ff1);
+    color: white;
+    font-size: 19px;
+    font-weight: 900;
+    padding: 17px;
+    border-radius: 11px;
+    box-shadow: 0 7px 15px rgba(0,130,230,.25);
+    transition: .2s;
+}
+
+.verify-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,100,220,.35);
+}
+
+/* How to claim */
+.steps-title {
+    text-align: center;
+    margin: 50px 0 25px;
+}
+
+.steps-title h2 {
+    font-size: 34px;
+    font-weight: 900;
+}
+
+.steps-title p {
+    color: #28627d;
+    margin-top: 8px;
+    font-size: 17px;
+}
+
+.steps {
+    background: rgba(255,255,255,.94);
+    border-radius: 22px;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+    box-shadow: 0 10px 28px rgba(0,0,0,.14);
+}
+
+.step {
+    text-align: center;
+    padding: 18px 12px;
+    border: 1px solid #cde8f1;
+    border-radius: 14px;
+    position: relative;
+}
+
+.number {
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    margin: -40px auto 15px;
+    border-radius: 50%;
+    background: #087ff1;
+    color: white;
+    font-weight: 900;
+}
+
+.step-icon {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.step h3 {
+    font-size: 16px;
+    margin-bottom: 9px;
+}
+
+.step p {
+    color: #527080;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Information */
+.info {
+    margin-top: 25px;
+    background: rgba(235,249,255,.96);
+    border: 2px solid #7bdcff;
+    border-radius: 18px;
+    padding: 22px 25px;
+}
+
+.info h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.info ul {
+    padding-left: 20px;
+}
+
+.info li {
+    margin: 7px 0;
+    color: #28627d;
+    font-size: 14px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    color: white;
+    margin-top: 45px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,.45);
+}
+
+.footer-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.footer-brand img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.footer-brand strong {
+    font-size: 24px;
+}
+
+.footer p {
+    font-size: 13px;
+    margin: 7px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 8px;
+    font-weight: bold;
+}
+
+/* Tablet */
+@media (max-width: 850px) {
+
+    .header {
+        flex-direction: column;
+        gap: 18px;
+        text-align: center;
     }
 
-    .box {
-      max-width: 500px;
-      margin: 100px auto;
-      background: rgba(0,0,0,0.65);
-      padding: 40px 25px;
-      border-radius: 20px;
+    .reward-box {
+        grid-template-columns: 1fr;
     }
 
-    .reward {
-      background: white;
-      color: #111;
-      border-radius: 12px;
-      padding: 30px;
-      margin: 25px 0;
-      font-size: 28px;
-      font-weight: bold;
+    .reward-image {
+        height: 330px;
     }
 
-    .button {
-      display: inline-block;
-      background: #087bea;
-      color: white;
-      padding: 16px 40px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 20px;
+    .steps {
+        grid-template-columns: repeat(2,1fr);
+        row-gap: 35px;
     }
-  </style>
+}
+
+/* Mobile */
+@media (max-width: 550px) {
+
+    .container {
+        width: 94%;
+    }
+
+    .brand {
+        flex-direction: column;
+    }
+
+    .brand-text h1 {
+        font-size: 30px;
+    }
+
+    .tagline {
+        font-size: 11px;
+    }
+
+    .reward-box {
+        padding: 18px;
+    }
+
+    .reward-image {
+        height: 280px;
+    }
+
+    .reward-info h2 {
+        font-size: 31px;
+    }
+
+    .reward-year {
+        font-size: 22px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .steps-title h2 {
+        font-size: 27px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="box">
-    <h1>Your Selected Reward</h1>
+<div class="container">
 
-    <div class="reward">
-      🎁 Gift Card Reward
-    </div>
+    <!-- HEADER -->
+    <header class="header">
 
-    <p>Continue to the verification page to see the available offer.</p>
+        <div class="brand">
 
-    <a class="button" href="verify.html">Continue</a>
-  </div>
+            <img src="logo.png" class="logo" alt="SINS Rewards">
+
+            <div class="brand-text">
+                <h1>SINS REWARDS</h1>
+                <div class="tagline">
+                    PLAY • EARN • REDEEM
+                </div>
+            </div>
+
+        </div>
+
+        <div class="safe">
+            🛡️ Secure Demo
+        </div>
+
+    </header>
+
+
+    <!-- BACK -->
+    <a href="index.html" class="back">
+        ← &nbsp; Back to Rewards
+    </a>
+
+
+    <!-- REWARD -->
+    <section class="reward-box">
+
+        <div class="reward-image">
+            <img src="downloadplaystat.png" alt="PlayStation Reward">
+        </div>
+
+        <div class="reward-info">
+
+            <span class="category">GAMING</span>
+
+            <h2>PLAYSTATION</h2>
+
+            <div class="reward-year">
+                1 YEAR
+            </div>
+
+            <p class="description">
+                Explore this featured gaming reward option
+                and continue through the demo verification flow.
+            </p>
+
+            <div class="divider"></div>
+
+            <div class="features">
+
+                <div class="feature">
+                    <div class="feature-icon">🎮</div>
+                    <strong>Gaming</strong>
+                    <span>Featured option</span>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🎁</div>
+                    <strong>Reward</strong>
+                    <span>Selected option</span>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">✓</div>
+                    <strong>Verification</strong>
+                    <span>Next step</span>
+                </div>
+
+            </div>
+
+            <a href="verify.html" class="verify-btn">
+                Proceed to Verify &nbsp; →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- STEPS TITLE -->
+    <section class="steps-title">
+
+        <h2>HOW TO CLAIM YOUR REWARD</h2>
+
+        <p>
+            Complete the steps below to continue through the demo.
+        </p>
+
+    </section>
+
+
+    <!-- STEPS -->
+    <section class="steps">
+
+        <div class="step">
+
+            <div class="number">1</div>
+
+            <div class="step-icon">📢</div>
+
+            <h3>Visit the Community</h3>
+
+            <p>
+                Follow the provided community instructions
+                before continuing.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="number">2</div>
+
+            <div class="step-icon">👤</div>
+
+            <h3>Verify Your Account</h3>
+
+            <p>
+                Continue to the verification page and
+                complete the displayed steps.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="number">3</div>
+
+            <div class="step-icon">🎁</div>
+
+            <h3>Review Your Reward</h3>
+
+            <p>
+                Review the selected reward information
+                shown on the next page.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="number">4</div>
+
+            <div class="step-icon">✓</div>
+
+            <h3>Finish</h3>
+
+            <p>
+                Complete the demo flow and return to
+                the rewards page when finished.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+    <section class="info">
+
+        <h3>🛡️ Important Information</h3>
+
+        <ul>
+            <li>This page is part of the SINS Rewards demo experience.</li>
+            <li>Reward availability and eligibility may vary.</li>
+            <li>Do not enter passwords, payment information, or sensitive personal information into an untrusted page.</li>
+        </ul>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-brand">
+
+            <img src="logo.png" alt="SINS Rewards">
+
+            <strong>SINS REWARDS</strong>
+
+        </div>
+
+        <p>
+            PLAY • EARN • REDEEM
+        </p>
+
+        <p>
+            © 2026 SINS REWARDS. All rights reserved.
+        </p>
+
+        <div class="footer-links">
+            <a href="#">Terms</a>
+            |
+            <a href="#">Privacy</a>
+            |
+            <a href="#">Support</a>
+        </div>
+
+    </footer>
+
+</div>
 
 </body>
 </html>
