@@ -4,254 +4,188 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sins Rewards</title>
+<title>SINS REWARDS</title>
 
 <style>
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background:
-        linear-gradient(135deg, #31c4e4 25%, #ffffff 25%, #ffffff 38%, #31c4e4 38%, #31c4e4 63%, #ffffff 63%, #ffffff 76%, #31c4e4 76%);
-    background-size: 100% 100%;
     min-height: 100vh;
-    color: #111;
+    background: #20c7e8;
+    overflow-x: hidden;
+}
+
+/* Background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        repeating-linear-gradient(
+            125deg,
+            rgba(255,255,255,0.9) 0px,
+            rgba(255,255,255,0.9) 45px,
+            transparent 45px,
+            transparent 115px
+        );
+    opacity: 0.7;
+    z-index: -1;
 }
 
 /* Main container */
 .container {
-    width: 100%;
-    max-width: 1250px;
+    width: 94%;
+    max-width: 1200px;
     margin: auto;
-    padding: 25px 20px 60px;
+    padding: 35px 0 60px;
 }
 
 /* Logo */
+.logo-box {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 .logo {
-    display: block;
     width: 105px;
     height: 105px;
     object-fit: contain;
-    margin: 0 auto 8px;
+    border-radius: 50%;
 }
 
-/* Header */
-.header {
+/* Title */
+h1 {
     text-align: center;
-    margin-bottom: 35px;
-}
-
-.header h1 {
-    margin: 0;
-    font-size: 48px;
+    font-size: 42px;
     font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 2px 2px 0 white;
+    color: white;
+    letter-spacing: 2px;
+    text-shadow: 0 3px 0 rgba(0,0,0,0.25);
 }
 
-.header h2 {
-    margin: 8px 0 5px;
-    font-size: 28px;
-    font-weight: 800;
+.subtitle {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 30px;
 }
 
-.header p {
-    margin: 0;
-    font-size: 16px;
+/* Demo notice */
+.notice {
+    max-width: 750px;
+    margin: 0 auto 30px;
+    padding: 13px 18px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
 }
 
-/* Reward grid */
-.rewards {
+/* Cards */
+.grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    max-width: 1150px;
-    margin: auto;
+    gap: 20px;
 }
 
-/* Reward card */
-.reward-card {
+.card {
     background: white;
-    border-radius: 12px;
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-    border: 2px solid rgba(0,0,0,0.12);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.reward-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 14px 25px rgba(0,0,0,0.32);
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25);
 }
 
-/* Card top */
-.card-top {
-    height: 95px;
-    padding: 12px;
-    text-align: center;
-    background: white;
-}
-
-.card-top .amount {
-    font-size: 27px;
-    font-weight: 900;
-    margin-bottom: 7px;
-}
-
-.card-top .delivery {
-    font-size: 13px;
-    color: #777;
-    font-weight: bold;
-}
-
-/* Card image */
 .card-image {
-    height: 145px;
+    width: 100%;
+    height: 175px;
+    background: #f2f2f2;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 27px;
-    font-weight: 900;
-    text-align: center;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content {
     padding: 15px;
-}
-
-/* Different card backgrounds */
-.apple {
-    background: linear-gradient(135deg, #111, #8e65d9);
-}
-
-.minecraft {
-    background: linear-gradient(135deg, #222, #4b9d32);
-}
-
-.playstation {
-    background: linear-gradient(135deg, #0645a5, #126ee8);
-}
-
-.pubg {
-    background: linear-gradient(135deg, #8d5b27, #222);
-}
-
-.fortnite {
-    background: linear-gradient(135deg, #6521a0, #171717);
-}
-
-.google {
-    background: linear-gradient(135deg, #111, #333);
-}
-
-.xbox {
-    background: linear-gradient(135deg, #0a9e31, #28bd4b);
-}
-
-.steam {
-    background: linear-gradient(135deg, #182b38, #3c667c);
-}
-
-.roblox {
-    background: linear-gradient(135deg, #222, #a52b2b);
-}
-
-.razer {
-    background: linear-gradient(135deg, #050505, #242424);
-}
-
-.wow {
-    background: linear-gradient(135deg, #704419, #d08b32);
-}
-
-.riot {
-    background: linear-gradient(135deg, #461010, #bb2222);
-}
-
-/* Button */
-.card-bottom {
-    padding: 14px;
     text-align: center;
-    background: white;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: #222;
+    margin-bottom: 6px;
+}
+
+.card-text {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 13px;
 }
 
 .select-btn {
-    display: inline-block;
-    width: 100%;
-    padding: 13px 10px;
-    border-radius: 7px;
-    background: #087fea;
-    color: white;
+    display: block;
     text-decoration: none;
-    font-size: 17px;
-    font-weight: 800;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s ease;
+    background: #19bfe0;
+    color: white;
+    font-weight: bold;
+    padding: 11px;
+    border-radius: 9px;
+    transition: 0.2s;
 }
 
 .select-btn:hover {
-    background: #0666bd;
+    background: #079fbd;
 }
 
 /* Footer */
 .footer {
     text-align: center;
+    color: white;
     margin-top: 35px;
     font-size: 13px;
-    color: #222;
-}
-
-/* Tablet */
-@media (max-width: 950px) {
-    .rewards {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .header h1 {
-        font-size: 40px;
-    }
+    font-weight: bold;
 }
 
 /* Mobile */
-@media (max-width: 700px) {
-    .rewards {
+@media (max-width: 900px) {
+    .grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-
-    .header h1 {
-        font-size: 32px;
-    }
-
-    .header h2 {
-        font-size: 22px;
-    }
-
-    .card-image {
-        height: 125px;
-        font-size: 21px;
-    }
-
-    .card-top {
-        height: 80px;
-    }
-
-    .card-top .amount {
-        font-size: 21px;
     }
 }
 
-@media (max-width: 430px) {
-    .rewards {
+@media (max-width: 550px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    .grid {
         grid-template-columns: 1fr;
     }
 
-    .logo {
-        width: 90px;
-        height: 90px;
+    .card-image {
+        height: 200px;
     }
 }
 </style>
@@ -261,232 +195,170 @@ body {
 
 <div class="container">
 
-    <!-- LOGO -->
-    <img src="logo.png" alt="Sins Rewards Logo" class="logo">
-
-    <!-- HEADER -->
-    <div class="header">
-
-        <h1>SINS REWARDS</h1>
-
-        <h2>Choose Your Reward</h2>
-
-        <p>Select an available reward below.</p>
-
+    <div class="logo-box">
+        <img src="logo.png" class="logo" alt="SINS Rewards Logo">
     </div>
 
+    <h1>SINS REWARDS</h1>
 
-    <!-- REWARDS -->
-    <div class="rewards">
+    <div class="subtitle">
+        Choose Your Reward
+    </div>
 
-        <!-- Apple Music -->
-        <div class="reward-card">
-            <div class="card-top">
-                <div class="amount">12 MONTH</div>
-                <div class="delivery">APPLE MUSIC</div>
-            </div>
+    <div class="notice">
+        🎁 Welcome to the SINS Rewards demo page. Select a reward to continue.
+    </div>
 
-            <div class="card-image apple">
-                 MUSIC
-            </div>
-
-            <div class="card-bottom">
-                <a href="verify.html" class="select-btn">Select</a>
-            </div>
-        </div>
-
-
-        <!-- Minecraft -->
-        <div class="reward-card">
-            <div class="card-top">
-                <div class="amount">$26.95</div>
-                <div class="delivery">MINECRAFT</div>
-            </div>
-
-            <div class="card-image minecraft">
-                MINECRAFT
-            </div>
-
-            <div class="card-bottom">
-                <a href="verify.html" class="select-btn">Select</a>
-            </div>
-        </div>
-
-
-        <!-- PlayStation -->
-        <div class="reward-card">
-            <div class="card-top">
-                <div class="amount">1 YEAR</div>
-                <div class="delivery">PLAYSTATION</div>
-            </div>
-
-            <div class="card-image playstation">
-                PLAYSTATION
-            </div>
-
-            <div class="card-bottom">
-                <a href="verify.html" class="select-btn">Select</a>
-            </div>
-        </div>
-
-
-        <!-- PUBG -->
-        <div class="reward-card">
-            <div class="card-top">
-                <div class="amount">6000</div>
-                <div class="delivery">PUBG MOBILE</div>
-            </div>
-
-            <div class="card-image pubg">
-                PUBG MOBILE
-            </div>
-
-            <div class="card-bottom">
-                <a href="verify.html" class="select-btn">Select</a>
-            </div>
-        </div>
-
-
-        <!-- Fortnite -->
-        <div class="reward-card">
-            <div class="card-top">
-                <div class="amount">5000</div>
-                <div class="delivery">V-BUCKS</div>
-            </div>
-
-            <div class="card-image fortnite">
-                FORTNITE
-            </div>
-
-            <div class="card-bottom">
-                <a href="verify.html" class="select-btn">Select</a>
-            </div>
-        </div>
-
+    <div class="grid">
 
         <!-- Google Play -->
-        <div class="reward-card">
-            <div class="card-top">
-                <div class="amount">$200</div>
-                <div class="delivery">GOOGLE PLAY</div>
+        <div class="card">
+            <div class="card-image">
+                <img src="downloadggplay.png" alt="Google Play">
             </div>
-
-            <div class="card-image google">
-                GOOGLE PLAY
-            </div>
-
-            <div class="card-bottom">
-                <a href="verify.html" class="select-btn">Select</a>
+            <div class="card-content">
+                <div class="card-title">Google Play</div>
+                <div class="card-text">Reward option</div>
+                <a href="reward.html" class="select-btn">SELECT</a>
             </div>
         </div>
 
-
-        <!-- Xbox -->
-        <div class="reward-card">
-            <div class="card-top">
-                <div class="amount">$100</div>
-                <div class="delivery">XBOX</div>
+        <!-- iOS -->
+        <div class="card">
+            <div class="card-image">
+                <img src="downloadios.png" alt="iOS">
             </div>
-
-            <div class="card-image xbox">
-                XBOX
-            </div>
-
-            <div class="card-bottom">
-                <a href="verify.html" class="select-btn">Select</a>
+            <div class="card-content">
+                <div class="card-title">iOS</div>
+                <div class="card-text">Reward option</div>
+                <a href="reward.html" class="select-btn">SELECT</a>
             </div>
         </div>
 
-
-        <!-- Steam -->
-        <div class="reward-card">
-            <div class="card-top">
-                <div class="amount">$100</div>
-                <div class="delivery">STEAM</div>
+        <!-- iTunes -->
+        <div class="card">
+            <div class="card-image">
+                <img src="downloaditune.png" alt="iTunes">
             </div>
-
-            <div class="card-image steam">
-                STEAM
-            </div>
-
-            <div class="card-bottom">
-                <a href="verify.html" class="select-btn">Select</a>
+            <div class="card-content">
+                <div class="card-title">iTunes</div>
+                <div class="card-text">Reward option</div>
+                <a href="reward.html" class="select-btn">SELECT</a>
             </div>
         </div>
 
+        <!-- Minecraft -->
+        <div class="card">
+            <div class="card-image">
+                <img src="downloadmine.jfif" alt="Minecraft">
+            </div>
+            <div class="card-content">
+                <div class="card-title">Minecraft</div>
+                <div class="card-text">Gaming reward option</div>
+                <a href="reward.html" class="select-btn">SELECT</a>
+            </div>
+        </div>
+
+        <!-- Fortnite / Gaming -->
+        <div class="card">
+            <div class="card-image">
+                <img src="downloadort.jfif" alt="Gaming">
+            </div>
+            <div class="card-content">
+                <div class="card-title">Gaming Reward</div>
+                <div class="card-text">Gaming reward option</div>
+                <a href="reward.html" class="select-btn">SELECT</a>
+            </div>
+        </div>
+
+        <!-- PlayStation -->
+        <div class="card">
+            <div class="card-image">
+                <img src="downloadplaystat.png" alt="PlayStation">
+            </div>
+            <div class="card-content">
+                <div class="card-title">PlayStation</div>
+                <div class="card-text">Gaming reward option</div>
+                <a href="reward.html" class="select-btn">SELECT</a>
+            </div>
+        </div>
 
         <!-- Roblox -->
-        <div class="reward-card">
-            <div class="card-top">
-                <div class="amount">$100</div>
-                <div class="delivery">ROBLOX</div>
+        <div class="card">
+            <div class="card-image">
+                <img src="downloadrobo.jfif" alt="Roblox">
             </div>
-
-            <div class="card-image roblox">
-                ROBLOX
-            </div>
-
-            <div class="card-bottom">
-                <a href="verify.html" class="select-btn">Select</a>
+            <div class="card-content">
+                <div class="card-title">Roblox</div>
+                <div class="card-text">Gaming reward option</div>
+                <a href="reward.html" class="select-btn">SELECT</a>
             </div>
         </div>
 
-
-        <!-- Razer Gold -->
-        <div class="reward-card">
-            <div class="card-top">
-                <div class="amount">$100</div>
-                <div class="delivery">RAZER GOLD</div>
+        <!-- Steam -->
+        <div class="card">
+            <div class="card-image">
+                <img src="downloadsteam.jfif" alt="Steam">
             </div>
-
-            <div class="card-image razer">
-                RAZER GOLD
-            </div>
-
-            <div class="card-bottom">
-                <a href="verify.html" class="select-btn">Select</a>
+            <div class="card-content">
+                <div class="card-title">Steam</div>
+                <div class="card-text">Gaming reward option</div>
+                <a href="reward.html" class="select-btn">SELECT</a>
             </div>
         </div>
 
-
-        <!-- World of Warcraft -->
-        <div class="reward-card">
-            <div class="card-top">
-                <div class="amount">60 DAY</div>
-                <div class="delivery">WORLD OF WARCRAFT</div>
+        <!-- Xbox -->
+        <div class="card">
+            <div class="card-image">
+                <img src="downloadxbox.png" alt="Xbox">
             </div>
-
-            <div class="card-image wow">
-                WORLD OF WARCRAFT
-            </div>
-
-            <div class="card-bottom">
-                <a href="verify.html" class="select-btn">Select</a>
+            <div class="card-content">
+                <div class="card-title">Xbox</div>
+                <div class="card-text">Gaming reward option</div>
+                <a href="reward.html" class="select-btn">SELECT</a>
             </div>
         </div>
 
-
-        <!-- Riot Games -->
-        <div class="reward-card">
-            <div class="card-top">
-                <div class="amount">$100</div>
-                <div class="delivery">RIOT GAMES</div>
+        <!-- Gaming -->
+        <div class="card">
+            <div class="card-image">
+                <img src="images%20%281%29gaming.jfif" alt="Gaming">
             </div>
-
-            <div class="card-image riot">
-                RIOT GAMES
+            <div class="card-content">
+                <div class="card-title">Gaming</div>
+                <div class="card-text">Reward option</div>
+                <a href="reward.html" class="select-btn">SELECT</a>
             </div>
+        </div>
 
-            <div class="card-bottom">
-                <a href="verify.html" class="select-btn">Select</a>
+        <!-- Riot -->
+        <div class="card">
+            <div class="card-image">
+                <img src="images%20%281%29riot.jfif" alt="Riot">
+            </div>
+            <div class="card-content">
+                <div class="card-title">Riot</div>
+                <div class="card-text">Gaming reward option</div>
+                <a href="reward.html" class="select-btn">SELECT</a>
+            </div>
+        </div>
+
+        <!-- Razer -->
+        <div class="card">
+            <div class="card-image">
+                <img src="imagesrazer.png" alt="Razer">
+            </div>
+            <div class="card-content">
+                <div class="card-title">Razer</div>
+                <div class="card-text">Gaming reward option</div>
+                <a href="reward.html" class="select-btn">SELECT</a>
             </div>
         </div>
 
     </div>
 
-
     <div class="footer">
-        Sins Rewards • Please review the terms and conditions before continuing.
+        © 2026 SINS REWARDS • Demo
     </div>
 
 </div>
