@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>SINS REWARDS</title>
 
 <style>
@@ -21,7 +20,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Diagonal background */
 body::before {
     content: "";
     position: fixed;
@@ -29,8 +27,8 @@ body::before {
     background:
         repeating-linear-gradient(
             130deg,
-            rgba(255,255,255,0.88) 0px,
-            rgba(255,255,255,0.88) 55px,
+            rgba(255,255,255,.88) 0px,
+            rgba(255,255,255,.88) 55px,
             transparent 55px,
             transparent 155px
         );
@@ -38,7 +36,6 @@ body::before {
     z-index: -1;
 }
 
-/* Page */
 .container {
     width: 92%;
     max-width: 1180px;
@@ -46,7 +43,8 @@ body::before {
     padding: 28px 0 50px;
 }
 
-/* Header */
+/* HEADER */
+
 .header {
     display: flex;
     align-items: center;
@@ -89,10 +87,10 @@ body::before {
     padding: 12px 20px;
     border-radius: 30px;
     font-weight: 800;
-    box-shadow: 0 5px 15px rgba(0,0,0,.18);
 }
 
-/* Back button */
+/* BACK */
+
 .back {
     display: inline-block;
     text-decoration: none;
@@ -103,17 +101,12 @@ body::before {
     font-weight: 800;
     margin-bottom: 22px;
     border: 2px solid rgba(255,255,255,.55);
-    transition: .2s;
 }
 
-.back:hover {
-    transform: translateX(-4px);
-    background: #007db6;
-}
+/* REWARD */
 
-/* Main reward */
 .reward-box {
-    background: rgba(255,255,255,.94);
+    background: rgba(255,255,255,.95);
     border-radius: 24px;
     padding: 28px;
     display: grid;
@@ -135,7 +128,6 @@ body::before {
     object-fit: cover;
 }
 
-/* Reward information */
 .category {
     display: inline-block;
     background: #72d8f5;
@@ -149,13 +141,13 @@ body::before {
 }
 
 .reward-info h2 {
-    font-size: 40px;
+    font-size: 42px;
     font-weight: 900;
     line-height: 1;
     margin-bottom: 8px;
 }
 
-.reward-year {
+.reward-type {
     font-size: 27px;
     font-weight: 900;
     margin-bottom: 15px;
@@ -165,7 +157,6 @@ body::before {
     color: #28627d;
     font-size: 18px;
     line-height: 1.5;
-    max-width: 650px;
 }
 
 .divider {
@@ -174,7 +165,8 @@ body::before {
     margin: 24px 0;
 }
 
-/* Features */
+/* FEATURES */
+
 .features {
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -204,7 +196,8 @@ body::before {
     margin-top: 4px;
 }
 
-/* Button */
+/* BUTTON */
+
 .verify-btn {
     display: block;
     width: 100%;
@@ -217,15 +210,14 @@ body::before {
     padding: 17px;
     border-radius: 11px;
     box-shadow: 0 7px 15px rgba(0,130,230,.25);
-    transition: .2s;
 }
 
 .verify-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,100,220,.35);
 }
 
-/* How to claim */
+/* STEPS */
+
 .steps-title {
     text-align: center;
     margin: 50px 0 25px;
@@ -257,7 +249,6 @@ body::before {
     padding: 18px 12px;
     border: 1px solid #cde8f1;
     border-radius: 14px;
-    position: relative;
 }
 
 .number {
@@ -287,7 +278,8 @@ body::before {
     line-height: 1.5;
 }
 
-/* Information */
+/* INFO */
+
 .info {
     margin-top: 25px;
     background: rgba(235,249,255,.96);
@@ -311,7 +303,8 @@ body::before {
     font-size: 14px;
 }
 
-/* Footer */
+/* FOOTER */
+
 .footer {
     text-align: center;
     color: white;
@@ -332,7 +325,6 @@ body::before {
     width: 55px;
     height: 55px;
     object-fit: contain;
-    border-radius: 50%;
 }
 
 .footer-brand strong {
@@ -344,14 +336,8 @@ body::before {
     margin: 7px;
 }
 
-.footer-links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 8px;
-    font-weight: bold;
-}
+/* MOBILE */
 
-/* Tablet */
 @media (max-width: 850px) {
 
     .header {
@@ -364,22 +350,13 @@ body::before {
         grid-template-columns: 1fr;
     }
 
-    .reward-image {
-        height: 330px;
-    }
-
     .steps {
         grid-template-columns: repeat(2,1fr);
         row-gap: 35px;
     }
 }
 
-/* Mobile */
 @media (max-width: 550px) {
-
-    .container {
-        width: 94%;
-    }
 
     .brand {
         flex-direction: column;
@@ -405,17 +382,12 @@ body::before {
         font-size: 31px;
     }
 
-    .reward-year {
-        font-size: 22px;
-    }
-
     .features {
         grid-template-columns: 1fr;
     }
 
     .steps {
         grid-template-columns: 1fr;
-        gap: 35px;
     }
 
     .steps-title h2 {
@@ -429,215 +401,325 @@ body::before {
 
 <div class="container">
 
-    <!-- HEADER -->
-    <header class="header">
+<header class="header">
 
-        <div class="brand">
+    <div class="brand">
 
-            <img src="logo.png" class="logo" alt="SINS Rewards">
+        <img src="logo.png" class="logo" alt="SINS Rewards">
 
-            <div class="brand-text">
-                <h1>SINS REWARDS</h1>
-                <div class="tagline">
-                    PLAY • EARN • REDEEM
-                </div>
+        <div class="brand-text">
+            <h1>SINS REWARDS</h1>
+            <div class="tagline">
+                PLAY • EARN • REDEEM
+            </div>
+        </div>
+
+    </div>
+
+    <div class="safe">
+        🛡️ Secure Demo
+    </div>
+
+</header>
+
+
+<a href="index.html" class="back">
+    ← &nbsp; Back to Rewards
+</a>
+
+
+<section class="reward-box">
+
+    <div class="reward-image">
+        <img id="rewardImage" src="" alt="Selected Reward">
+    </div>
+
+
+    <div class="reward-info">
+
+        <span class="category" id="rewardCategory">
+            REWARD
+        </span>
+
+        <h2 id="rewardName">
+            Selected Reward
+        </h2>
+
+        <div class="reward-type" id="rewardType">
+            Reward Option
+        </div>
+
+        <p class="description" id="rewardDescription">
+            You selected this reward option. Continue through
+            the demo verification flow to view the next step.
+        </p>
+
+        <div class="divider"></div>
+
+
+        <div class="features">
+
+            <div class="feature">
+                <div class="feature-icon">🎁</div>
+                <strong>Selected Reward</strong>
+                <span>Your choice</span>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">✓</div>
+                <strong>Verification</strong>
+                <span>Next step</span>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <strong>Secure Demo</strong>
+                <span>Protected flow</span>
             </div>
 
         </div>
 
-        <div class="safe">
-            🛡️ Secure Demo
-        </div>
 
-    </header>
+        <a href="verify.html" class="verify-btn">
+            Proceed to Verify &nbsp; →
+        </a>
 
+    </div>
 
-    <!-- BACK -->
-    <a href="index.html" class="back">
-        ← &nbsp; Back to Rewards
-    </a>
+</section>
 
 
-    <!-- REWARD -->
-    <section class="reward-box">
+<section class="steps-title">
 
-        <div class="reward-image">
-            <img src="downloadplaystat.png" alt="PlayStation Reward">
-        </div>
+    <h2>HOW TO CLAIM YOUR REWARD</h2>
 
-        <div class="reward-info">
+    <p>
+        Complete the steps below to continue through the demo.
+    </p>
 
-            <span class="category">GAMING</span>
-
-            <h2>PLAYSTATION</h2>
-
-            <div class="reward-year">
-                1 YEAR
-            </div>
-
-            <p class="description">
-                Explore this featured gaming reward option
-                and continue through the demo verification flow.
-            </p>
-
-            <div class="divider"></div>
-
-            <div class="features">
-
-                <div class="feature">
-                    <div class="feature-icon">🎮</div>
-                    <strong>Gaming</strong>
-                    <span>Featured option</span>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">🎁</div>
-                    <strong>Reward</strong>
-                    <span>Selected option</span>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">✓</div>
-                    <strong>Verification</strong>
-                    <span>Next step</span>
-                </div>
-
-            </div>
-
-            <a href="verify.html" class="verify-btn">
-                Proceed to Verify &nbsp; →
-            </a>
-
-        </div>
-
-    </section>
+</section>
 
 
-    <!-- STEPS TITLE -->
-    <section class="steps-title">
+<section class="steps">
 
-        <h2>HOW TO CLAIM YOUR REWARD</h2>
-
+    <div class="step">
+        <div class="number">1</div>
+        <div class="step-icon">📢</div>
+        <h3>Visit the Community</h3>
         <p>
-            Complete the steps below to continue through the demo.
+            Follow the provided community instructions
+            before continuing.
         </p>
-
-    </section>
-
-
-    <!-- STEPS -->
-    <section class="steps">
-
-        <div class="step">
-
-            <div class="number">1</div>
-
-            <div class="step-icon">📢</div>
-
-            <h3>Visit the Community</h3>
-
-            <p>
-                Follow the provided community instructions
-                before continuing.
-            </p>
-
-        </div>
+    </div>
 
 
-        <div class="step">
-
-            <div class="number">2</div>
-
-            <div class="step-icon">👤</div>
-
-            <h3>Verify Your Account</h3>
-
-            <p>
-                Continue to the verification page and
-                complete the displayed steps.
-            </p>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="number">3</div>
-
-            <div class="step-icon">🎁</div>
-
-            <h3>Review Your Reward</h3>
-
-            <p>
-                Review the selected reward information
-                shown on the next page.
-            </p>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="number">4</div>
-
-            <div class="step-icon">✓</div>
-
-            <h3>Finish</h3>
-
-            <p>
-                Complete the demo flow and return to
-                the rewards page when finished.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- INFORMATION -->
-    <section class="info">
-
-        <h3>🛡️ Important Information</h3>
-
-        <ul>
-            <li>This page is part of the SINS Rewards demo experience.</li>
-            <li>Reward availability and eligibility may vary.</li>
-            <li>Do not enter passwords, payment information, or sensitive personal information into an untrusted page.</li>
-        </ul>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer class="footer">
-
-        <div class="footer-brand">
-
-            <img src="logo.png" alt="SINS Rewards">
-
-            <strong>SINS REWARDS</strong>
-
-        </div>
-
+    <div class="step">
+        <div class="number">2</div>
+        <div class="step-icon">👤</div>
+        <h3>Verify Your Account</h3>
         <p>
-            PLAY • EARN • REDEEM
+            Continue to the verification page and
+            complete the displayed steps.
         </p>
+    </div>
 
+
+    <div class="step">
+        <div class="number">3</div>
+        <div class="step-icon">🎁</div>
+        <h3>Review Your Reward</h3>
         <p>
-            © 2026 SINS REWARDS. All rights reserved.
+            Review the selected reward information
+            shown on the next page.
         </p>
+    </div>
 
-        <div class="footer-links">
-            <a href="#">Terms</a>
-            |
-            <a href="#">Privacy</a>
-            |
-            <a href="#">Support</a>
-        </div>
 
-    </footer>
+    <div class="step">
+        <div class="number">4</div>
+        <div class="step-icon">✓</div>
+        <h3>Finish</h3>
+        <p>
+            Complete the demo flow and return to
+            the rewards page when finished.
+        </p>
+    </div>
+
+</section>
+
+
+<section class="info">
+
+    <h3>🛡️ Important Information</h3>
+
+    <ul>
+        <li>This page is part of the SINS Rewards demo experience.</li>
+        <li>Reward availability and eligibility may vary.</li>
+        <li>Do not enter passwords, payment information, or sensitive personal information into an untrusted page.</li>
+    </ul>
+
+</section>
+
+
+<footer class="footer">
+
+    <div class="footer-brand">
+        <img src="logo.png" alt="SINS Rewards">
+        <strong>SINS REWARDS</strong>
+    </div>
+
+    <p>PLAY • EARN • REDEEM</p>
+
+    <p>
+        © 2026 SINS REWARDS. All rights reserved.
+    </p>
+
+</footer>
 
 </div>
+
+
+<script>
+
+/* Reward database */
+
+const rewards = {
+
+    playstation: {
+        name: "PLAYSTATION",
+        type: "Gaming Reward",
+        category: "GAMING",
+        image: "downloadplaystat.png",
+        description:
+        "You selected the PlayStation reward option. Continue through the demo verification flow to view the next step."
+    },
+
+    minecraft: {
+        name: "MINECRAFT",
+        type: "Gaming Reward",
+        category: "GAMING",
+        image: "downloadmine.jfif",
+        description:
+        "You selected the Minecraft reward option. Continue through the demo verification flow to view the next step."
+    },
+
+    google: {
+        name: "GOOGLE PLAY",
+        type: "Digital Reward",
+        category: "DIGITAL",
+        image: "downloadggplay.png",
+        description:
+        "You selected the Google Play reward option. Continue through the demo verification flow to view the next step."
+    },
+
+    apple: {
+        name: "APPLE",
+        type: "Digital Reward",
+        category: "DIGITAL",
+        image: "downloadios.png",
+        description:
+        "You selected the Apple reward option. Continue through the demo verification flow to view the next step."
+    },
+
+    itunes: {
+        name: "iTUNES",
+        type: "Digital Reward",
+        category: "DIGITAL",
+        image: "downloaditune.png",
+        description:
+        "You selected the iTunes reward option. Continue through the demo verification flow to view the next step."
+    },
+
+    xbox: {
+        name: "XBOX",
+        type: "Gaming Reward",
+        category: "GAMING",
+        image: "downloadxbox.png",
+        description:
+        "You selected the Xbox reward option. Continue through the demo verification flow to view the next step."
+    },
+
+    steam: {
+        name: "STEAM",
+        type: "Gaming Reward",
+        category: "GAMING",
+        image: "downloadsteam.jfif",
+        description:
+        "You selected the Steam reward option. Continue through the demo verification flow to view the next step."
+    },
+
+    roblox: {
+        name: "ROBLOX",
+        type: "Gaming Reward",
+        category: "GAMING",
+        image: "downloadrobo.jfif",
+        description:
+        "You selected the Roblox reward option. Continue through the demo verification flow to view the next step."
+    },
+
+    razer: {
+        name: "RAZER",
+        type: "Gaming Reward",
+        category: "GAMING",
+        image: "imagesrazer.png",
+        description:
+        "You selected the Razer reward option. Continue through the demo verification flow to view the next step."
+    },
+
+    gaming: {
+        name: "GAMING",
+        type: "Gaming Reward",
+        category: "GAMING",
+        image: "images%20%281%29gaming.jfif",
+        description:
+        "You selected this gaming reward option. Continue through the demo verification flow to view the next step."
+    },
+
+    riot: {
+        name: "RIOT",
+        type: "Gaming Reward",
+        category: "GAMING",
+        image: "images%20%281%29riot.jfif",
+        description:
+        "You selected the Riot reward option. Continue through the demo verification flow to view the next step."
+    },
+
+    fortnite: {
+        name: "FORTNITE",
+        type: "Gaming Reward",
+        category: "GAMING",
+        image: "downloadort.jfif",
+        description:
+        "You selected this gaming reward option. Continue through the demo verification flow to view the next step."
+    }
+
+};
+
+
+/* Read selected reward from URL */
+
+const params = new URLSearchParams(window.location.search);
+
+const selectedReward = params.get("reward") || "playstation";
+
+const reward = rewards[selectedReward] || rewards.playstation;
+
+
+/* Display selected reward */
+
+document.getElementById("rewardImage").src = reward.image;
+document.getElementById("rewardImage").alt = reward.name;
+
+document.getElementById("rewardName").textContent = reward.name;
+
+document.getElementById("rewardType").textContent = reward.type;
+
+document.getElementById("rewardCategory").textContent = reward.category;
+
+document.getElementById("rewardDescription").textContent =
+    reward.description;
+
+</script>
 
 </body>
 </html>
