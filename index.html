@@ -1,94 +1,616 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Reward Center</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #27c7e8;
-      text-align: center;
-      color: #111;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sins Rewards</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        linear-gradient(125deg, #27c8e8 0%, #27c8e8 22%,
+        #ffffff 22%, #ffffff 38%,
+        #27c8e8 38%, #27c8e8 62%,
+        #ffffff 62%, #ffffff 78%,
+        #27c8e8 78%);
+    color: #111;
+}
+
+/* HEADER */
+
+header {
+    background: white;
+    padding: 18px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.12);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #08aeea;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 55px 20px 35px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: clamp(42px, 7vw, 78px);
+    font-weight: 1000;
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    text-shadow: 3px 3px 0 white;
+}
+
+.hero h1 span {
+    color: #079ee4;
+}
+
+.hero p {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0 20px;
+}
+
+.status {
+    display: inline-block;
+    background: #079ee4;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+/* REWARD GRID */
+
+.rewards {
+    width: 92%;
+    max-width: 1400px;
+    margin: 20px auto 60px;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+/* CARD */
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.22);
+    border: 2px solid rgba(0,180,230,0.25);
+    transition: transform .2s, box-shadow .2s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.28);
+}
+
+.card-top {
+    padding: 15px 12px 8px;
+    text-align: center;
+    min-height: 92px;
+}
+
+.brand {
+    font-size: 21px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.delivery {
+    font-size: 12px;
+    color: #666;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 900;
+    text-align: right;
+    padding-right: 10px;
+}
+
+/* VISUAL CARD AREA */
+
+.visual {
+    margin: 0 10px;
+    height: 125px;
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 22px;
+    font-weight: 900;
+    text-align: center;
+
+    padding: 10px;
+}
+
+.apple {
+    background: linear-gradient(135deg,#111,#777);
+}
+
+.minecraft {
+    background: linear-gradient(135deg,#287b31,#111);
+}
+
+.playstation {
+    background: linear-gradient(135deg,#064ca5,#18a9e8);
+}
+
+.fortnite {
+    background: linear-gradient(135deg,#7227b8,#d34ce8);
+}
+
+.google {
+    background: linear-gradient(135deg,#111,#333);
+}
+
+.xbox {
+    background: linear-gradient(135deg,#0ca72e,#42dc55);
+}
+
+.steam {
+    background: linear-gradient(135deg,#171d25,#42566d);
+}
+
+.roblox {
+    background: linear-gradient(135deg,#222,#e22);
+}
+
+.razer {
+    background: linear-gradient(135deg,#111,#202020);
+}
+
+.riot {
+    background: linear-gradient(135deg,#641d20,#e44b3e);
+}
+
+.amazon {
+    background: linear-gradient(135deg,#111,#343434);
+}
+
+.gaming {
+    background: linear-gradient(135deg,#222,#087ed1);
+}
+
+/* BUTTON */
+
+.select {
+    display: block;
+    width: calc(100% - 20px);
+    margin: 10px;
+    border: none;
+    background: #079ee4;
+    color: white;
+    padding: 12px 5px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.select:hover {
+    background: #007fc0;
+}
+
+/* FOOTER */
+
+.features {
+    background: white;
+    padding: 30px 10%;
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    text-align: center;
+    box-shadow: 0 -3px 15px rgba(0,0,0,0.1);
+}
+
+.feature {
+    font-weight: bold;
+}
+
+.feature-icon {
+    font-size: 30px;
+    display: block;
+    margin-bottom: 7px;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+    .rewards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    header {
+        padding: 15px 20px;
     }
 
-    .header {
-      padding: 40px 20px 20px;
+    .logo {
+        font-size: 23px;
     }
 
-    h1 {
-      font-size: 42px;
-      margin: 10px;
-      font-weight: 900;
+    nav {
+        display: none;
     }
 
-    h2 {
-      font-size: 28px;
-      margin: 10px;
+    .hero {
+        padding-top: 35px;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 20px;
+    .hero h1 {
+        font-size: 43px;
+        letter-spacing: -2px;
     }
 
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 25px 15px;
-      box-shadow: 0 5px 15px #0004;
+    .hero p {
+        font-size: 16px;
     }
 
-    .card h3 {
-      font-size: 24px;
+    .rewards {
+        width: 94%;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
-    .button {
-      display: inline-block;
-      background: #087bea;
-      color: white;
-      padding: 14px 30px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 18px;
+    .brand {
+        font-size: 16px;
     }
-  </style>
+
+    .visual {
+        height: 105px;
+        font-size: 16px;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="header">
-    <h1>REWARD CENTER</h1>
-    <h2>Choose Your Reward</h2>
-    <p>Select an available reward below.</p>
-  </div>
+<header>
 
-  <div class="cards">
-
-    <div class="card">
-      <h3>🎮 Gaming Reward</h3>
-      <p>Available reward</p>
-      <a class="button" href="reward.html">Select</a>
+    <div class="logo">
+        🎁 <span>SINS</span> REWARDS
     </div>
 
-    <div class="card">
-      <h3>🎁 Gift Card</h3>
-      <p>Available reward</p>
-      <a class="button" href="reward.html">Select</a>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="reward.html">Rewards</a>
+        <a href="verify.html">Verify</a>
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>
+        CHOOSE YOUR <span>REWARD</span>
+    </h1>
+
+    <p>
+        Select an available reward to continue
+    </p>
+
+    <div class="status">
+        🎁 Rewards Available
     </div>
 
+</section>
+
+
+<section class="rewards">
+
+
+    <!-- APPLE -->
+
     <div class="card">
-      <h3>💳 Store Reward</h3>
-      <p>Available reward</p>
-      <a class="button" href="reward.html">Select</a>
+        <div class="card-top">
+            <div class="price">$25</div>
+            <div class="brand"> Apple Gift Card</div>
+            <div class="delivery">Quick Digital Delivery</div>
+        </div>
+
+        <div class="visual apple">
+             APPLE
+        </div>
+
+        <a class="select" href="reward.html?reward=apple">
+            Select Reward
+        </a>
     </div>
 
-  </div>
+
+    <!-- MINECRAFT -->
+
+    <div class="card">
+        <div class="card-top">
+            <div class="price">$25</div>
+            <div class="brand">Minecraft</div>
+            <div class="delivery">Quick Digital Delivery</div>
+        </div>
+
+        <div class="visual minecraft">
+            ⛏️ MINECRAFT
+        </div>
+
+        <a class="select" href="reward.html?reward=minecraft">
+            Select Reward
+        </a>
+    </div>
+
+
+    <!-- PLAYSTATION -->
+
+    <div class="card">
+        <div class="card-top">
+            <div class="price">$25</div>
+            <div class="brand">PlayStation</div>
+            <div class="delivery">Quick Digital Delivery</div>
+        </div>
+
+        <div class="visual playstation">
+            🎮 PLAYSTATION
+        </div>
+
+        <a class="select" href="reward.html?reward=playstation">
+            Select Reward
+        </a>
+    </div>
+
+
+    <!-- FORTNITE -->
+
+    <div class="card">
+        <div class="card-top">
+            <div class="price">$25</div>
+            <div class="brand">Fortnite</div>
+            <div class="delivery">Quick Digital Delivery</div>
+        </div>
+
+        <div class="visual fortnite">
+            ⚡ FORTNITE
+        </div>
+
+        <a class="select" href="reward.html?reward=fortnite">
+            Select Reward
+        </a>
+    </div>
+
+
+    <!-- GOOGLE PLAY -->
+
+    <div class="card">
+        <div class="card-top">
+            <div class="price">$25</div>
+            <div class="brand">Google Play</div>
+            <div class="delivery">Quick Digital Delivery</div>
+        </div>
+
+        <div class="visual google">
+            ▶ GOOGLE PLAY
+        </div>
+
+        <a class="select" href="reward.html?reward=google">
+            Select Reward
+        </a>
+    </div>
+
+
+    <!-- XBOX -->
+
+    <div class="card">
+        <div class="card-top">
+            <div class="price">$25</div>
+            <div class="brand">Xbox</div>
+            <div class="delivery">Quick Digital Delivery</div>
+        </div>
+
+        <div class="visual xbox">
+            🎮 XBOX
+        </div>
+
+        <a class="select" href="reward.html?reward=xbox">
+            Select Reward
+        </a>
+    </div>
+
+
+    <!-- ITUNES -->
+
+    <div class="card">
+        <div class="card-top">
+            <div class="price">$50</div>
+            <div class="brand">iTunes</div>
+            <div class="delivery">Quick Digital Delivery</div>
+        </div>
+
+        <div class="visual apple">
+             iTUNES
+        </div>
+
+        <a class="select" href="reward.html?reward=itunes">
+            Select Reward
+        </a>
+    </div>
+
+
+    <!-- STEAM -->
+
+    <div class="card">
+        <div class="card-top">
+            <div class="price">$50</div>
+            <div class="brand">Steam</div>
+            <div class="delivery">Quick Digital Delivery</div>
+        </div>
+
+        <div class="visual steam">
+            🎮 STEAM
+        </div>
+
+        <a class="select" href="reward.html?reward=steam">
+            Select Reward
+        </a>
+    </div>
+
+
+    <!-- ROBLOX -->
+
+    <div class="card">
+        <div class="card-top">
+            <div class="price">$25</div>
+            <div class="brand">Roblox</div>
+            <div class="delivery">Quick Digital Delivery</div>
+        </div>
+
+        <div class="visual roblox">
+            ◇ ROBLOX
+        </div>
+
+        <a class="select" href="reward.html?reward=roblox">
+            Select Reward
+        </a>
+    </div>
+
+
+    <!-- RAZER -->
+
+    <div class="card">
+        <div class="card-top">
+            <div class="price">$25</div>
+            <div class="brand">Razer Gold</div>
+            <div class="delivery">Quick Digital Delivery</div>
+        </div>
+
+        <div class="visual razer">
+            🟢 RAZER GOLD
+        </div>
+
+        <a class="select" href="reward.html?reward=razer">
+            Select Reward
+        </a>
+    </div>
+
+
+    <!-- RIOT -->
+
+    <div class="card">
+        <div class="card-top">
+            <div class="price">$25</div>
+            <div class="brand">Riot Games</div>
+            <div class="delivery">Quick Digital Delivery</div>
+        </div>
+
+        <div class="visual riot">
+            ⚔️ RIOT GAMES
+        </div>
+
+        <a class="select" href="reward.html?reward=riot">
+            Select Reward
+        </a>
+    </div>
+
+
+    <!-- GAMING -->
+
+    <div class="card">
+        <div class="card-top">
+            <div class="price">$50</div>
+            <div class="brand">Gaming Reward</div>
+            <div class="delivery">Quick Digital Delivery</div>
+        </div>
+
+        <div class="visual gaming">
+            🏆 GAMING
+        </div>
+
+        <a class="select" href="reward.html?reward=gaming">
+            Select Reward
+        </a>
+    </div>
+
+
+</section>
+
+
+<section class="features">
+
+    <div class="feature">
+        <span class="feature-icon">🔒</span>
+        Secure
+        <br>
+        <small>Your information is protected</small>
+    </div>
+
+    <div class="feature">
+        <span class="feature-icon">⚡</span>
+        Digital Delivery
+        <br>
+        <small>Delivery depends on reward availability</small>
+    </div>
+
+    <div class="feature">
+        <span class="feature-icon">🎁</span>
+        Rewards
+        <br>
+        <small>Choose from available rewards</small>
+    </div>
+
+</section>
 
 </body>
 </html>
