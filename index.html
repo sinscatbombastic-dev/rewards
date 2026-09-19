@@ -1,666 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SINS REWARDS</title>
-
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
-    color: #10232b;
-    background:
-        radial-gradient(circle at 15% 10%, rgba(255,255,255,.25), transparent 28%),
-        radial-gradient(circle at 85% 25%, rgba(255,255,255,.18), transparent 30%),
-        linear-gradient(135deg, #08afd2, #20c7e8 50%, #079fca);
-    overflow-x: hidden;
-}
-
-/* Background decoration */
-
-.bg-circle {
-    position: fixed;
-    border-radius: 50%;
-    background: rgba(255,255,255,.10);
-    pointer-events: none;
-    z-index: 0;
-}
-
-.circle-one {
-    width: 320px;
-    height: 320px;
-    top: -120px;
-    left: -100px;
-}
-
-.circle-two {
-    width: 420px;
-    height: 420px;
-    right: -170px;
-    bottom: -170px;
-}
-
-/* Header */
-
-header {
-    position: relative;
-    z-index: 2;
-    max-width: 1180px;
-    margin: auto;
-    padding: 24px 24px 0;
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 18px;
-    border: 1px solid rgba(255,255,255,.35);
-    background: rgba(255,255,255,.14);
-    backdrop-filter: blur(14px);
-    border-radius: 18px;
-}
-
-.nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: white;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-    font-size: 16px;
-}
-
-.nav-brand img {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-}
-
-.nav-badge {
-    color: white;
-    font-size: 12px;
-    font-weight: 800;
-    padding: 8px 12px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.18);
-}
-
-/* Hero */
-
-.hero {
-    position: relative;
-    z-index: 1;
-    max-width: 1000px;
-    margin: auto;
-    padding: 70px 24px 55px;
-    text-align: center;
-}
-
-.logo {
-    width: 125px;
-    height: 125px;
-    object-fit: contain;
-    filter: drop-shadow(0 15px 22px rgba(0,0,0,.18));
-    animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%,100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
-.eyebrow {
-    display: inline-block;
-    margin-top: 18px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.20);
-    border: 1px solid rgba(255,255,255,.30);
-    color: white;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-}
-
-.hero h1 {
-    margin-top: 18px;
-    color: white;
-    font-size: clamp(42px, 7vw, 72px);
-    line-height: .95;
-    font-weight: 1000;
-    letter-spacing: -2px;
-    text-shadow: 0 10px 25px rgba(0,0,0,.15);
-}
-
-.hero h1 span {
-    display: block;
-    color: #10232b;
-}
-
-.hero p {
-    max-width: 620px;
-    margin: 22px auto 0;
-    color: rgba(255,255,255,.94);
-    font-size: 17px;
-    line-height: 1.7;
-}
-
-.hero-button {
-    display: inline-block;
-    margin-top: 28px;
-    padding: 15px 25px;
-    border-radius: 14px;
-    background: #10232b;
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 900;
-    box-shadow: 0 12px 25px rgba(0,0,0,.18);
-    transition: .25s ease;
-}
-
-.hero-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 18px 32px rgba(0,0,0,.24);
-}
-
-/* Main */
-
-main {
-    position: relative;
-    z-index: 2;
-    max-width: 1180px;
-    margin: auto;
-    padding: 0 24px 70px;
-}
-
-.section-heading {
-    text-align: center;
-    margin-bottom: 28px;
-}
-
-.section-heading h2 {
-    color: white;
-    font-size: 30px;
-    font-weight: 900;
-}
-
-.section-heading p {
-    margin-top: 8px;
-    color: rgba(255,255,255,.88);
-    font-size: 14px;
-}
-
-/* Reward grid */
-
-.rewards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
-.reward-card {
-    position: relative;
-    overflow: hidden;
-    background: rgba(255,255,255,.96);
-    border: 1px solid rgba(255,255,255,.8);
-    border-radius: 22px;
-    padding: 12px;
-    box-shadow: 0 16px 35px rgba(0,0,0,.13);
-    transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.reward-card::before {
-    content: "";
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    top: -70px;
-    right: -70px;
-    border-radius: 50%;
-    background: rgba(32,199,232,.10);
-}
-
-.reward-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 24px 45px rgba(0,0,0,.20);
-}
-
-.reward-image {
-    height: 150px;
-    width: 100%;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #eefcff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.reward-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .35s ease;
-}
-
-.reward-card:hover .reward-image img {
-    transform: scale(1.06);
-}
-
-.reward-content {
-    padding: 15px 6px 5px;
-}
-
-.reward-content h3 {
-    font-size: 16px;
-    font-weight: 900;
-    margin-bottom: 5px;
-}
-
-.reward-content p {
-    color: #718087;
-    font-size: 12px;
-    margin-bottom: 13px;
-}
-
-.select-button {
-    display: block;
-    text-align: center;
-    padding: 11px;
-    border-radius: 11px;
-    background: #10232b;
-    color: white;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: .5px;
-    transition: .2s ease;
-}
-
-.select-button:hover {
-    background: #20abc8;
-    transform: translateY(-1px);
-}
-
-/* Bottom information */
-
-.info-section {
-    margin-top: 55px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-
-.info-card {
-    padding: 22px;
-    border-radius: 20px;
-    background: rgba(255,255,255,.15);
-    border: 1px solid rgba(255,255,255,.28);
-    backdrop-filter: blur(12px);
-    color: white;
-}
-
-.info-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    background: rgba(255,255,255,.20);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    margin-bottom: 14px;
-}
-
-.info-card h3 {
-    font-size: 15px;
-    margin-bottom: 7px;
-}
-
-.info-card p {
-    color: rgba(255,255,255,.82);
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-/* Footer */
-
-footer {
-    position: relative;
-    z-index: 2;
-    padding: 25px;
-    text-align: center;
-    color: rgba(255,255,255,.80);
-    font-size: 12px;
-}
-
-footer strong {
-    color: white;
-}
-
-/* Responsive */
-
-@media (max-width: 950px) {
-    .rewards {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 700px) {
-    header {
-        padding: 15px 14px 0;
-    }
-
-    .hero {
-        padding: 55px 18px 45px;
-    }
-
-    .hero h1 {
-        font-size: 48px;
-    }
-
-    main {
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-
-    .rewards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 13px;
-    }
-
-    .reward-image {
-        height: 135px;
-    }
-
-    .info-section {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 420px) {
-    .nav-badge {
-        display: none;
-    }
-
-    .hero h1 {
-        font-size: 42px;
-    }
-
-    .hero p {
-        font-size: 15px;
-    }
-
-    .rewards {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .reward-card {
-        border-radius: 17px;
-        padding: 8px;
-    }
-
-    .reward-image {
-        height: 115px;
-        border-radius: 12px;
-    }
-
-    .reward-content {
-        padding: 11px 3px 3px;
-    }
-
-    .reward-content h3 {
-        font-size: 14px;
-    }
-
-    .select-button {
-        padding: 10px 5px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MR BEAST — Gift Card Giveaway</title>
+
+    <!-- Google Translate -->
+    <meta name="google-translate-customization" content="">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #111827;
+            background: #28cbea;
+        }
+
+        /* =========================
+           ANIMATED BACKGROUND
+        ========================== */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff 0%,
+                    #ffffff 22%,
+                    #35d3ef 22%,
+                    #35d3ef 48%,
+                    #ffffff 48%,
+                    #ffffff 72%,
+                    #35d3ef 72%,
+                    #35d3ef 100%
+                );
+            background-size: 180% 180%;
+            animation: backgroundMove 12s linear infinite;
+        }
+
+        .background::before {
+            content: "";
+            position: absolute;
+            width: 160%;
+            height: 160%;
+            left: -30%;
+            top: -30%;
+            background:
+                repeating-linear-gradient(
+                    -35deg,
+                    rgba(255,255,255,0.82) 0px,
+                    rgba(255,255,255,0.82) 95px,
+                    transparent 95px,
+                    transparent 230px
+                );
+            animation: stripesMove 14s linear infinite;
+        }
+
+        .background::after {
+            content: "";
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: rgba(255,255,255,0.22);
+            filter: blur(90px);
+            animation: glowMove 7s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundMove {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        @keyframes stripesMove {
+            from {
+                transform: translateX(-80px) rotate(0deg);
+            }
+
+            to {
+                transform: translateX(80px) rotate(0deg);
+            }
+        }
+
+        @keyframes glowMove {
+            from {
+                transform: translate(-60%, -50%) scale(0.9);
+                opacity: 0.35;
+            }
+
+            to {
+                transform: translate(-40%, -45%) scale(1.15);
+                opacity: 0.65;
+            }
+        }
+
+        /* =========================
+           LANGUAGE
+        ========================== */
+
+        .language-box {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            padding: 16px 10px 4px;
+        }
+
+        #google_translate_element {
+            background: rgba(255,255,255,0.94);
+            padding: 5px 9px;
+            border-radius: 7px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+
+        .goog-te-gadget {
+            font-family: Arial, sans-serif !important;
+            font-size: 0 !important;
+        }
+
+        .goog-te-gadget .goog-te-combo {
+            margin: 0 !important;
+            padding: 4px 8px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            font-size: 13px;
+            background: white;
+            color: #111827;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            text-align: center;
+            padding: 8px 20px 28px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            width: 145px;
+            max-width: 45vw;
+            height: auto;
+            display: block;
+            margin: 0 auto 4px;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.2));
+        }
+
+        .brand {
+            font-size: clamp(42px, 8vw, 76px);
+            line-height: 0.95;
+            font-weight: 1000;
+            color: #050505;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+            text-shadow:
+                2px 3px 0 rgba(255,255,255,0.75),
+                0 7px 18px rgba(0,0,0,0.15);
+            margin-top: 4px;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            font-size: clamp(22px, 4vw, 38px);
+            font-weight: 1000;
+            color: #050505;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            text-shadow: 1px 2px 0 rgba(255,255,255,0.7);
+        }
+
+        .update {
+            margin-top: 3px;
+            font-size: 14px;
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .update span {
+            color: #ef233c;
+        }
+
+        /* =========================
+           MAIN
+        ========================== */
+
+        main {
+            width: min(1180px, 94%);
+            margin: 0 auto;
+            padding-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 1000;
+            color: #050505;
+            margin: 8px 0 20px;
+            text-transform: uppercase;
+        }
+
+        .rewards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .reward-card {
+            position: relative;
+            min-height: 185px;
+            background: rgba(255,255,255,0.94);
+            border-radius: 18px;
+            padding: 14px;
+            text-decoration: none;
+            color: #111827;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow:
+                0 12px 35px rgba(0,0,0,0.18),
+                inset 0 0 0 1px rgba(255,255,255,0.9);
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+            overflow: hidden;
+        }
+
+        .reward-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                120deg,
+                transparent 25%,
+                rgba(255,255,255,0.7) 50%,
+                transparent 75%
+            );
+            transform: translateX(-120%);
+            transition: transform 0.6s ease;
+        }
+
+        .reward-card:hover {
+            transform: translateY(-8px) scale(1.025);
+            box-shadow:
+                0 22px 45px rgba(0,0,0,0.24),
+                0 0 0 2px rgba(255,255,255,0.75);
+        }
+
+        .reward-card:hover::before {
+            transform: translateX(120%);
+        }
+
+        .reward-card img {
+            width: 100%;
+            height: 125px;
+            object-fit: contain;
+            border-radius: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reward-name {
+            width: 100%;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 900;
+            padding-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .choose {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           INFO
+        ========================== */
+
+        .info {
+            max-width: 850px;
+            margin: 38px auto 0;
+            padding: 24px;
+            background: rgba(255,255,255,0.86);
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .info h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 1000;
+        }
+
+        .info p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #374151;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 24px 15px 30px;
+            color: #111827;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 900px) {
+            .rewards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .rewards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .reward-card {
+                min-height: 165px;
+                padding: 10px;
+            }
+
+            .reward-card img {
+                height: 105px;
+            }
+
+            .brand {
+                letter-spacing: -2px;
+            }
+
+            .subtitle {
+                letter-spacing: -0.5px;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .rewards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .reward-card img {
+                height: 90px;
+            }
+
+            .reward-name {
+                font-size: 13px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="bg-circle circle-one"></div>
-<div class="bg-circle circle-two"></div>
+    <div class="background"></div>
 
-<header>
-    <div class="nav">
+    <!-- LANGUAGE SELECTOR -->
+    <div class="language-box">
+        <div id="google_translate_element"></div>
+    </div>
 
-        <div class="nav-brand">
-            <img src="logo.png" alt="SINS">
-            <span>SINS REWARDS</span>
+    <!-- HEADER -->
+    <header>
+
+        <img src="logo.png" alt="Mr Beast" class="logo">
+
+        <div class="brand">
+            MR BEAST
         </div>
 
-        <div class="nav-badge">
-            DEMO EXPERIENCE
+        <div class="subtitle">
+            GIFT CARD GIVEAWAY
         </div>
 
-    </div>
-</header>
+        <div class="update">
+            Last update:
+            <span id="currentDate"></span>
+        </div>
 
-<section class="hero">
+    </header>
 
-    <img src="logo.png" class="logo" alt="SINS REWARDS Logo">
+    <!-- REWARDS -->
+    <main>
 
-    <div class="eyebrow">
-        ✦ REWARD COLLECTION
-    </div>
+        <div class="section-title">
+            Choose Your Gift Card
+        </div>
 
-    <h1>
-        SINS
-        <span>REWARDS</span>
-    </h1>
+        <section class="rewards">
 
-    <p>
-        Explore the available reward options below and choose the
-        experience you want to continue with.
-    </p>
-
-    <a href="#rewards" class="hero-button">
-        Explore Rewards ↓
-    </a>
-
-</section>
-
-<main id="rewards">
-
-    <div class="section-heading">
-        <h2>Choose Your Reward</h2>
-        <p>Select an option below to continue</p>
-    </div>
-
-    <div class="rewards">
-
-        <div class="reward-card">
-            <div class="reward-image">
+            <a href="reward.html?reward=google" class="reward-card">
                 <img src="downloadggplay.png" alt="Google Play">
-            </div>
-            <div class="reward-content">
-                <h3>Google Play</h3>
-                <p>Digital reward option</p>
-                <a class="select-button" href="reward.html?reward=google">SELECT</a>
-            </div>
-        </div>
+                <div class="reward-name">
+                    Google Play
+                    <span class="choose">Choose</span>
+                </div>
+            </a>
 
-        <div class="reward-card">
-            <div class="reward-image">
+            <a href="reward.html?reward=apple" class="reward-card">
                 <img src="downloadios.png" alt="Apple">
-            </div>
-            <div class="reward-content">
-                <h3>Apple</h3>
-                <p>Digital reward option</p>
-                <a class="select-button" href="reward.html?reward=apple">SELECT</a>
-            </div>
-        </div>
+                <div class="reward-name">
+                    Apple
+                    <span class="choose">Choose</span>
+                </div>
+            </a>
 
-        <div class="reward-card">
-            <div class="reward-image">
+            <a href="reward.html?reward=itunes" class="reward-card">
                 <img src="downloaditune.png" alt="iTunes">
-            </div>
-            <div class="reward-content">
-                <h3>iTunes</h3>
-                <p>Digital reward option</p>
-                <a class="select-button" href="reward.html?reward=itunes">SELECT</a>
-            </div>
-        </div>
+                <div class="reward-name">
+                    iTunes
+                    <span class="choose">Choose</span>
+                </div>
+            </a>
 
-        <div class="reward-card">
-            <div class="reward-image">
+            <a href="reward.html?reward=minecraft" class="reward-card">
                 <img src="downloadmine.jfif" alt="Minecraft">
-            </div>
-            <div class="reward-content">
-                <h3>Minecraft</h3>
-                <p>Gaming reward option</p>
-                <a class="select-button" href="reward.html?reward=minecraft">SELECT</a>
-            </div>
-        </div>
+                <div class="reward-name">
+                    Minecraft
+                    <span class="choose">Choose</span>
+                </div>
+            </a>
 
-        <div class="reward-card">
-            <div class="reward-image">
-                <img src="images (1)gaming.jfif" alt="Gaming">
-            </div>
-            <div class="reward-content">
-                <h3>Gaming</h3>
-                <p>Gaming reward option</p>
-                <a class="select-button" href="reward.html?reward=gaming">SELECT</a>
-            </div>
-        </div>
+            <a href="reward.html?reward=gaming" class="reward-card">
+                <img src="images%20%281%29gaming.jfif" alt="Gaming">
+                <div class="reward-name">
+                    Gaming
+                    <span class="choose">Choose</span>
+                </div>
+            </a>
 
-        <div class="reward-card">
-            <div class="reward-image">
+            <a href="reward.html?reward=playstation" class="reward-card">
                 <img src="downloadplaystat.png" alt="PlayStation">
-            </div>
-            <div class="reward-content">
-                <h3>PlayStation</h3>
-                <p>Gaming reward option</p>
-                <a class="select-button" href="reward.html?reward=playstation">SELECT</a>
-            </div>
-        </div>
+                <div class="reward-name">
+                    PlayStation
+                    <span class="choose">Choose</span>
+                </div>
+            </a>
 
-        <div class="reward-card">
-            <div class="reward-image">
+            <a href="reward.html?reward=roblox" class="reward-card">
                 <img src="downloadrobo.jfif" alt="Roblox">
-            </div>
-            <div class="reward-content">
-                <h3>Roblox</h3>
-                <p>Gaming reward option</p>
-                <a class="select-button" href="reward.html?reward=roblox">SELECT</a>
-            </div>
-        </div>
+                <div class="reward-name">
+                    Roblox
+                    <span class="choose">Choose</span>
+                </div>
+            </a>
 
-        <div class="reward-card">
-            <div class="reward-image">
+            <a href="reward.html?reward=steam" class="reward-card">
                 <img src="downloadsteam.jfif" alt="Steam">
-            </div>
-            <div class="reward-content">
-                <h3>Steam</h3>
-                <p>Gaming reward option</p>
-                <a class="select-button" href="reward.html?reward=steam">SELECT</a>
-            </div>
-        </div>
+                <div class="reward-name">
+                    Steam
+                    <span class="choose">Choose</span>
+                </div>
+            </a>
 
-        <div class="reward-card">
-            <div class="reward-image">
+            <a href="reward.html?reward=xbox" class="reward-card">
                 <img src="downloadxbox.png" alt="Xbox">
-            </div>
-            <div class="reward-content">
-                <h3>Xbox</h3>
-                <p>Gaming reward option</p>
-                <a class="select-button" href="reward.html?reward=xbox">SELECT</a>
-            </div>
-        </div>
+                <div class="reward-name">
+                    Xbox
+                    <span class="choose">Choose</span>
+                </div>
+            </a>
 
-        <div class="reward-card">
-            <div class="reward-image">
-                <img src="images (1)riot.jfif" alt="Riot">
-            </div>
-            <div class="reward-content">
-                <h3>Riot</h3>
-                <p>Gaming reward option</p>
-                <a class="select-button" href="reward.html?reward=riot">SELECT</a>
-            </div>
-        </div>
+            <a href="reward.html?reward=riot" class="reward-card">
+                <img src="images%20%281%29riot.jfif" alt="Riot Games">
+                <div class="reward-name">
+                    Riot Games
+                    <span class="choose">Choose</span>
+                </div>
+            </a>
 
-        <div class="reward-card">
-            <div class="reward-image">
+            <a href="reward.html?reward=razer" class="reward-card">
                 <img src="imagesrazer.png" alt="Razer">
-            </div>
-            <div class="reward-content">
-                <h3>Razer</h3>
-                <p>Gaming reward option</p>
-                <a class="select-button" href="reward.html?reward=razer">SELECT</a>
-            </div>
-        </div>
+                <div class="reward-name">
+                    Razer
+                    <span class="choose">Choose</span>
+                </div>
+            </a>
 
-        <div class="reward-card">
-            <div class="reward-image">
+            <a href="reward.html?reward=fortnite" class="reward-card">
                 <img src="downloadort.jfif" alt="Gaming">
-            </div>
-            <div class="reward-content">
-                <h3>Gaming</h3>
-                <p>Gaming reward option</p>
-                <a class="select-button" href="reward.html?reward=fortnite">SELECT</a>
-            </div>
-        </div>
+                <div class="reward-name">
+                    Gaming
+                    <span class="choose">Choose</span>
+                </div>
+            </a>
 
-    </div>
+        </section>
 
-    <div class="info-section">
+        <div class="info">
 
-        <div class="info-card">
-            <div class="info-icon">🎁</div>
-            <h3>Choose</h3>
+            <h2>
+                Gift Card Giveaway
+            </h2>
+
             <p>
-                Browse the available reward options and select
-                the one you want to explore.
+                Choose a gift card above to continue through the giveaway process.
+                Available reward options may vary by location.
             </p>
+
         </div>
 
-        <div class="info-card">
-            <div class="info-icon">⚡</div>
-            <h3>Continue</h3>
-            <p>
-                Follow the on-screen demo flow after selecting
-                your reward.
-            </p>
-        </div>
+    </main>
 
-        <div class="info-card">
-            <div class="info-icon">✓</div>
-            <h3>Verify</h3>
-            <p>
-                Continue through the demo verification experience
-                without entering sensitive information.
-            </p>
-        </div>
+    <footer>
+        © 2026 MR BEAST • Gift Card Giveaway
+    </footer>
 
-    </div>
 
-</main>
+    <!-- CURRENT DATE -->
+    <script>
+        const date = new Date();
 
-<footer>
-    © 2026 <strong>SINS REWARDS</strong> • Demo Experience
-</footer>
+        const options = {
+            month: "short",
+            day: "numeric",
+            year: "numeric"
+        };
+
+        document.getElementById("currentDate").textContent =
+            date.toLocaleDateString("en-US", options);
+    </script>
+
+
+    <!-- GOOGLE TRANSLATE -->
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: "en",
+                    includedLanguages:
+                        "en,es,fr,de,it,pt,ru,ar,hi,zh-CN,ja,ko,tr,nl,pl",
+                    layout:
+                        google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                "google_translate_element"
+            );
+        }
+    </script>
+
+    <script
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
 
 </body>
 </html>
